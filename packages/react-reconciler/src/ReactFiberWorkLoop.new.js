@@ -1013,6 +1013,10 @@ function performConcurrentWorkOnRoot(root, didTimeout) {
         }
         if (exitStatus === RootFatalErrored) {
           const fatalError = workInProgressRootFatalError;
+          /**
+           * In case of error or some wired cases, we need to give up current Jobs done
+           * and redo them from beginning, this is what `fresh` means.
+           */
           prepareFreshStack(root, NoLanes);
           markRootSuspended(root, lanes);
           ensureRootIsScheduled(root, now());

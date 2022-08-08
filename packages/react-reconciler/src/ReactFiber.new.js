@@ -151,6 +151,11 @@ function FiberNode(
   this.subtreeFlags = NoFlags;
   this.deletions = null;
 
+  /**
+   * Each filer knows
+   * 1. priorities for the work of itself - lanes
+   * 2. priorities for the work of its descendant - childLanes
+   */
   this.lanes = NoLanes;
   this.childLanes = NoLanes;
 
