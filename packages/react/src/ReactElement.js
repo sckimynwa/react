@@ -148,6 +148,11 @@ function warnIfStringRefCannotBeAutoConverted(config) {
 const ReactElement = function(type, key, ref, self, source, owner, props) {
   const element = {
     // This tag allows us to uniquely identify this as a React Element
+    /**
+     * export const REACT_ELEMENT_TYPE = Symbol.for('react.element');
+     * react.element임을 나타내는 Symbol을 사용한다.
+     * fiber를 만들 때, element의 종류를 확인하기 위해 사용한다.
+     */
     $$typeof: REACT_ELEMENT_TYPE,
 
     // Built-in properties that belong on the element
@@ -393,6 +398,10 @@ export function createElement(type, config, children) {
         hasOwnProperty.call(config, propName) &&
         !RESERVED_PROPS.hasOwnProperty(propName)
       ) {
+        /**
+         * Element의 Props 중 RESERVED_PROPS(key, ref, _self)가 아닌 props들인 경우
+         * props 객체에 추가한다.
+         */
         props[propName] = config[propName];
       }
     }
@@ -400,6 +409,10 @@ export function createElement(type, config, children) {
 
   // Children can be more than one argument, and those are transferred onto
   // the newly allocated props object.
+  /**
+   * children은 여러개일 수 있으며, React에서는 이를 Array로 변환하여 관리한다.
+   * children은 props의 property로 들어간다
+   */
   const childrenLength = arguments.length - 2;
   if (childrenLength === 1) {
     props.children = children;
@@ -417,6 +430,9 @@ export function createElement(type, config, children) {
   }
 
   // Resolve default props
+  /**
+   * App.defaultProps 를 통해 속성의 기본값을 정해준 경우, 이를 resolve한다.
+   */
   if (type && type.defaultProps) {
     const defaultProps = type.defaultProps;
     for (propName in defaultProps) {
