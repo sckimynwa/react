@@ -126,6 +126,7 @@ function FiberRootNode(
   }
 }
 
+// ReactDOM.createRoot -> createContainer -> createFiberRoot
 export function createFiberRoot(
   containerInfo: any,
   tag: RootTag,
@@ -143,6 +144,7 @@ export function createFiberRoot(
   transitionCallbacks: null | TransitionTracingCallbacks,
 ): FiberRoot {
   const root: FiberRoot = (new FiberRootNode(
+    // Container element를 참조한다.
     containerInfo,
     tag,
     hydrate,
@@ -164,6 +166,7 @@ export function createFiberRoot(
     isStrictMode,
     concurrentUpdatesByDefaultOverride,
   );
+  // current는 현재 DOM에 적용된 VDOM의 최상단 노드를 가리킨다.
   root.current = uninitializedFiber;
   uninitializedFiber.stateNode = root;
 

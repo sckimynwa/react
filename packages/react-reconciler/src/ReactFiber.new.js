@@ -467,6 +467,9 @@ export function createHostRootFiber(
   return createFiber(HostRoot, null, null, mode);
 }
 
+/**
+ * 여러 형태의 Element를 잘 분간하여 거기에 맞는 fiber tag를 찾아낸다
+ */
 export function createFiberFromTypeAndProps(
   type: any, // React$ElementType
   key: null | string,
@@ -637,6 +640,9 @@ export function createFiberFromFragment(
   key: null | string,
 ): Fiber {
   const fiber = createFiber(Fragment, elements, key, mode);
+  /**
+   * TODO: Lanes의 역할 Concurrency와 함께 다시 생각해 볼 필요가 있음.
+   */
   fiber.lanes = lanes;
   return fiber;
 }
@@ -782,6 +788,10 @@ export function createFiberFromText(
   mode: TypeOfMode,
   lanes: Lanes,
 ): Fiber {
+  /**
+   * Text는 그 자체가 데이터이므로 key도 필요 없다.
+   * props에는 텍스트 자체가 content로 들어간다.
+   */
   const fiber = createFiber(HostText, content, null, mode);
   fiber.lanes = lanes;
   return fiber;
