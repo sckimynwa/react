@@ -1007,7 +1007,11 @@ function updateFragment(
   workInProgress: Fiber,
   renderLanes: Lanes,
 ) {
+  // eslint-disable-next-line react-internal/no-production-logging
+  // console.log('pendingProps: ', workInProgress.pendingProps);
+  // const nextChildren = 'hahahaa'; // workInProgress.pendingProps;
   const nextChildren = workInProgress.pendingProps;
+
   reconcileChildren(current, workInProgress, nextChildren, renderLanes);
   return workInProgress.child;
 }
@@ -3832,6 +3836,9 @@ function beginWork(
   workInProgress: Fiber,
   renderLanes: Lanes,
 ): Fiber | null {
+  // eslint-disable-next-line react-internal/no-production-logging
+  console.log('begin work on', workInProgress.type);
+
   if (__DEV__) {
     if (workInProgress._debugNeedsRemount && current !== null) {
       // This will restart the begin phase with a new fiber.

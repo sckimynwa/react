@@ -841,6 +841,8 @@ function completeWork(
   workInProgress: Fiber,
   renderLanes: Lanes,
 ): Fiber | null {
+  // eslint-disable-next-line react-internal/no-production-logging
+  // console.log('complete work on', workInProgress.type);
   const newProps = workInProgress.pendingProps;
   // Note: This intentionally doesn't check if we're hydrating because comparing
   // to the current tree provider fiber is just as fast and less error-prone.

@@ -1581,6 +1581,8 @@ function getHostSibling(fiber: Fiber): ?Instance {
 }
 
 function commitPlacement(finishedWork: Fiber): void {
+  // eslint-disable-next-line react-internal/no-production-logging
+  // console.log('commit placement on', finishedWork.type);
   if (!supportsMutation) {
     return;
   }
