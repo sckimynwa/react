@@ -15,6 +15,7 @@ import {
   REACT_PROVIDER_TYPE,
   REACT_DEBUG_TRACING_MODE_TYPE,
   REACT_STRICT_MODE_TYPE,
+  REACT_YEOUL_MODE_TYPE,
   REACT_SUSPENSE_TYPE,
   REACT_SUSPENSE_LIST_TYPE,
   REACT_MEMO_TYPE,
@@ -56,6 +57,7 @@ export default function isValidElementType(type: mixed) {
     type === REACT_PROFILER_TYPE ||
     (enableDebugTracing && type === REACT_DEBUG_TRACING_MODE_TYPE) ||
     type === REACT_STRICT_MODE_TYPE ||
+    type === REACT_YEOUL_MODE_TYPE ||
     type === REACT_SUSPENSE_TYPE ||
     type === REACT_SUSPENSE_LIST_TYPE ||
     (enableLegacyHidden && type === REACT_LEGACY_HIDDEN_TYPE) ||

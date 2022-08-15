@@ -78,6 +78,7 @@ import {
   ProfileMode,
   StrictLegacyMode,
   StrictEffectsMode,
+  YeoulMode,
   ConcurrentUpdatesByDefaultMode,
 } from './ReactTypeOfMode';
 import {
@@ -97,6 +98,7 @@ import {
   REACT_LEGACY_HIDDEN_TYPE,
   REACT_CACHE_TYPE,
   REACT_TRACING_MARKER_TYPE,
+  REACT_YEOUL_MODE_TYPE,
 } from 'shared/ReactSymbols';
 
 export type {Fiber};
@@ -510,6 +512,10 @@ export function createFiberFromTypeAndProps(
           // Strict effects should never run on legacy roots
           mode |= StrictEffectsMode;
         }
+        break;
+      case REACT_YEOUL_MODE_TYPE:
+        fiberTag = Mode;
+        mode |= YeoulMode;
         break;
       case REACT_PROFILER_TYPE:
         return createFiberFromProfiler(pendingProps, mode, lanes, key);

@@ -16,4 +16,5 @@ export const ProfileMode = /*                    */ 0b000010;
 export const DebugTracingMode = /*               */ 0b000100;
 export const StrictLegacyMode = /*               */ 0b001000;
 export const StrictEffectsMode = /*              */ 0b010000;
+export const YeoulMode = /*                      */ 0b0100000;
 export const ConcurrentUpdatesByDefaultMode = /* */ 0b100000;

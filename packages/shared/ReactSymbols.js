@@ -16,6 +16,8 @@ export const REACT_ELEMENT_TYPE = Symbol.for('react.element');
 export const REACT_PORTAL_TYPE = Symbol.for('react.portal');
 export const REACT_FRAGMENT_TYPE = Symbol.for('react.fragment');
 export const REACT_STRICT_MODE_TYPE = Symbol.for('react.strict_mode');
+// TODO: to be removed. just for test
+export const REACT_YEOUL_MODE_TYPE = Symbol.for('react.yeoul_mode');
 export const REACT_PROFILER_TYPE = Symbol.for('react.profiler');
 export const REACT_PROVIDER_TYPE = Symbol.for('react.provider');
 export const REACT_CONTEXT_TYPE = Symbol.for('react.context');
